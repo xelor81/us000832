@@ -1,0 +1,29 @@
+---
+- name: managing VM environment
+  user: root
+  hosts: local
+
+# List available networks
+  tasks:
+    - name: List available VM networks
+      virt_net:
+        command: list_nets
+
+# Define network for VM
+    - name: Defining VM  network
+      virt_net:
+        name: "{{ item }}"
+        command: define
+        xml: /export/images/virsh/network/{{ item }}
+      with_items:
+        - "{{ NETWORK_NAME.split(',') }}"
+        - NAT
+
+# Making sure those network are active
+    - name: Ensure networks are active
+      virt_net:
+        state: active
+        name: "{{ item }}"
+      with_items:
+        - "{{ NETWORK_NAME.split(',') }}"
+        - NAT
