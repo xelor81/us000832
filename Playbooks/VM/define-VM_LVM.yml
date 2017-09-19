@@ -1,0 +1,20 @@
+---
+- name: Manage LVM Volumes
+  user: root
+  hosts: local
+  become: yes
+  tasks:
+    - name: Remove old LVM volume
+      lvol:
+        vg: "{{ VG_NAME }}"
+        lv: "{{ VOL_NAME }}"
+        state: absent
+        force: yes
+
+    - name: Creating LVM volume
+      lvol:
+        vg: "{{ VG_NAME }}"
+        lv: "{{ VOL_NAME }}"
+        state: present
+        size: 50G
+        force: yes
