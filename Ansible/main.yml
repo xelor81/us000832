@@ -1,8 +1,0 @@
----
-#this is main playbook file
-- hosts: all
-  roles:
-    - setup
-#    - define-vm-network
-#    - define-vm
-#    - deploy-vm

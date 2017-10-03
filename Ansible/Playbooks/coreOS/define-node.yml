@@ -1,0 +1,50 @@
+---
+- name: manage libvirt guests
+  user: root
+  hosts: local
+  become: yes
+  vars:
+    cpu: "{{ CPU }}"
+    memory_mb: "{{ MEMORY }}"
+    vm_storage: "{{ VM_STORAGE }}"
+    vm_name: "{{ VM_NAME }}"
+    vm_networks: "{{ VM_NETWORK }}"
+    mac_file: '/export/images/virsh/network/vm-macs'
+
+  tasks:
+    - name: Define VM
+      virt:
+        name: "{{ vm_name }}"
+        command: define
+        xml: "{{ lookup('template', '/export/images/virsh/vms/{{ vm_name }}.xml') }}"
+
+    - name: Setting MAX CPU
+      command: "/usr/bin/virsh setvcpus {{ vm_name }} {{ cpu }} --config --maximum"
+
+    - name: Setting Current CPU
+      command: "/usr/bin/virsh setvcpus {{ vm_name }} {{ cpu }} --config"
+
+    - name: Setting Memory
+      command: "/usr/bin/virsh setmaxmem {{ vm_name }} {{ memory_mb }}M --config"
+
+    - name: Setting current memory
+      command:  "/usr/bin/virsh setmem {{ vm_name }} {{ memory_mb }}M --config"
+
+    - name: Register MACs
+      shell: "/bin/grep -e {{ vm_name }} {{ mac_file }} | grep -e {{ item }} | awk -F\"#\" \'{print $3}\'"
+      with_items: "{{ vm_networks.split(',') }}"
+      register: mac
+
+    - debug: msg="item.item={{item.item}}, item.stdout={{item.stdout}}"
+      with_items: "{{ mac.results }}"
+
+    - name: Setting bridge NIC
+      command: "/usr/bin/virsh attach-interface --domain {{ vm_name }} --type bridge --source 'bridge0' --model virtio --mac {{ item.stdout }} --config"
+      when: item.item == "bridge"
+      with_items: "{{ mac.results }}"
+
+    - name: Setting other NICs
+      command: "/usr/bin/virsh attach-interface --domain {{ vm_name }} --type network --source {{ item.item }} --model virtio --mac {{ item.stdout }} --config"
+      when:
+        - item.item != 'bridge'
+      with_items: "{{ mac.results }}"
