@@ -9,5 +9,6 @@ node {
 	dir("pipeline")
 	def stages = load "./common_functions.groovy";
 	
+	println("------- ANSIBLE PART --------")
 	stages.deploy_VM_NET()
 }
