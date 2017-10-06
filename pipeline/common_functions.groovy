@@ -32,3 +32,4 @@ def deploy_VM_ans(VM_NAME, CPU, MEMORY, VM_NETWORK) {
 	return true
 }
 
+return this;
