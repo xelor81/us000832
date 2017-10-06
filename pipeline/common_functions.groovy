@@ -6,6 +6,7 @@ def deploy_VM_NET() {
 		playbook: '../Ansible/Playbooks/VM/define-VM-net.yml',
 		sudo: true
 	}
+	return true
 }
 
 def deploy_VM_LVM(VOL_NAME) {
@@ -16,6 +17,7 @@ def deploy_VM_LVM(VOL_NAME) {
 		playbook: '../Ansible/Playbooks/VM/define-VM_LVM.yml',
 		sudo: true
 	}
+	return true
 }
 
 
@@ -27,5 +29,6 @@ def deploy_VM_ans(VM_NAME, CPU, MEMORY, VM_NETWORK) {
 		playbook: '../Ansible/Playbooks/VM/defineVM.yml', 
 		sudo: true
 	}
+	return true
 }
 
