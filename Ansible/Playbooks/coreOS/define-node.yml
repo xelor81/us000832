@@ -1,5 +1,5 @@
 ---
-- name: manage libvirt guests
+- name: Deploy CoreOS node
   user: root
   hosts: local
   become: yes

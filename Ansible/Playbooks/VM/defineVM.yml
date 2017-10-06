@@ -1,12 +1,11 @@
 ---
-- name: manage libvirt guests
+- name: Deploy VM via libvirt daemon
   user: root
   hosts: local
   become: yes
   vars:
     cpu: "{{ CPU }}"
     memory_mb: "{{ MEMORY }}"
-    vm_storage: "{{ VM_STORAGE }}"
     vm_name: "{{ VM_NAME }}"
     vm_networks: "{{ VM_NETWORK }}"
     mac_file: '/export/images/virsh/network/vm-macs'
