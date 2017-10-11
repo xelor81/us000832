@@ -4,7 +4,12 @@ def setting_ansible_color() {
 	}
 }
 
-def git_CHECK(git_branch, git_login, git_url) {
+def ZPRINT(ZSTRING) {
+	stage("PRINTING STRING ${ZSTRING}") {
+		println "STRING: " + ZSTRING
+	}
+}
+def gitCHECK(git_branch, git_login, git_url) {
 	stage("***** Checkout Github *****") {
 		println("DEF GIT CHECKOUT")
 		println("GIT URL " + git_url)
