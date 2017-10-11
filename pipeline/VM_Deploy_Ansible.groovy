@@ -12,6 +12,10 @@ node {
 	println("git BRANCH: " + git_branch)
 	println("VM VOL:     " + env.Host1)
 	
+	def host_params = env.Host1.split(',')
+	println("VM PARAMS:" + host_params)
+	
+	
 	stage("***** Checkout Github *****") {
 		git branch: git_branch, credentialsId: git_login, url: git_url
 	}
