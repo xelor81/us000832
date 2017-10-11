@@ -11,4 +11,5 @@ node {
 	
 	println("------- ANSIBLE PART --------")
 	stages.deploy_VM_NET()
+	
 }

@@ -1,3 +1,9 @@
+def setting_ansible_color() {
+	stage("Setup Ansible Color schema for better console output") {
+		export ANSIBLE_FORCE_COLOR=true
+	}
+}
+
 def deploy_VM_NET() {
 	stage('Defining VM Networks and activating them') {
 		ansiblePlaybook colorized: true,
