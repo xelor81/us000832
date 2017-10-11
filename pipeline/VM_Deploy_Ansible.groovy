@@ -13,6 +13,7 @@ node {
 	println("VM VOL:     " + env.Host1)
 	
 	def host_params = env.Host1.split(',')
+	
 	println("VM PARAMS:" + host_params)
 	
 	println("NETWORK:  " + host_params[3:6])
