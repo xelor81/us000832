@@ -9,7 +9,9 @@ node {
 	//------------------ EXECUTE PIPELINES JOBS ---------------------------
 	println("ZZZZZZZZ: " + git_url)
 	println("login: " + git_login)
+	
 	stages.git_checkout(git_branch, git_login, git_url)
+	
 	stages.deploy_VM_NET()
 	
 }
