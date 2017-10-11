@@ -12,10 +12,9 @@ node {
 	println("git LOGIN:  " + git_login)
 	println("git BRANCH: " + git_branch)
 	
-	//stages.ZPRINT()
-	//stages.gitCHECK(git_branch, git_login, git_url)
 	
-	stages.setting_ansible_color()
+	stages.gitCHECK(git_branch, git_login, git_url)
+	
 	stages.deploy_VM_NET()
 	
 }
