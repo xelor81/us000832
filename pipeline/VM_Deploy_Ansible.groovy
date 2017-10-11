@@ -15,6 +15,7 @@ node {
 	//stages.ZPRINT()
 	//stages.gitCHECK(git_branch, git_login, git_url)
 	
+	stages.setting_ansible_color()
 	stages.deploy_VM_NET()
 	
 }
