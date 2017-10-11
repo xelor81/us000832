@@ -1,18 +1,7 @@
-def setting_ansible_color() {
-	stage("***** Setup Ansible Color schema for better console output *****") {
-		export ANSIBLE_FORCE_COLOR=true
-	}
-}
-
-def ZPRINT(ZSTRING) {
-	stage("PRINTING STRING ${ZSTRING}") {
-		println "STRING: " + ZSTRING
-	}
-}
 def gitCHECK(git_branch, git_login, git_url) {
 	stage("***** Checkout Github *****") {
-		println("DEF GIT CHECKOUT")
-		println("GIT URL " + git_url)
+		println("GIT BRANCH---------- " +git_branch)
+		git branch: git_branch, credentialsId: '513094ca-73b7-4145-8829-4474bbbb1c24', url: 'git@github.com:xelor81/us000832.git'
 	}	
 }
 
