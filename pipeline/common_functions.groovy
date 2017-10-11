@@ -8,8 +8,7 @@ def git_checkout(git_branch, git_login, git_url) {
 	stage("***** Checkout Github *****") {
 		println("DEF GIT CHECKOUT")
 		println("GIT URL " + git_url)
-	}
-		
+	}	
 }
 
 def deploy_VM_NET() {
