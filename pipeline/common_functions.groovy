@@ -1,10 +1,3 @@
-def gitCHECK(git_branch, git_login, git_url) {
-	stage("***** Checkout Github *****") {
-		println("GIT BRANCH---------- " +git_branch)
-		git branch: git_branch, credentialsId: '513094ca-73b7-4145-8829-4474bbbb1c24', url: 'git@github.com:xelor81/us000832.git'
-	}	
-}
-
 def deploy_VM_NET() {
 	ansiColor('xterm') {
 		stage("***** Defining VM Networks and activating them *****") {
