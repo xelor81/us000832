@@ -26,5 +26,5 @@ node {
 	
 	stages.deploy_VM_NET()
 	stages.deploy_VM_LVM(host_params[0])
-	//stages.deploy_VM(host_params[0], host_params[1], host_params[2])
+	stages.deploy_VM(host_params[0], host_params[1], host_params[2], host_params[3])
 }
