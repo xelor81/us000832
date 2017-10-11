@@ -7,8 +7,9 @@ node {
 	git_branch='master'
 	
 	//------------------ EXECUTE PIPELINES JOBS ---------------------------
-	
-	stages.git_checkout(${env.git_branch}, ${env.git_login}, ${env.git_url})
+	println("ZZZZZZZZ: " + git_url)
+	println("login: " + git_login)
+	stages.git_checkout(git_branch, env.git_login, git_url)
 	stages.deploy_VM_NET()
 	
 }
