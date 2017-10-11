@@ -16,7 +16,6 @@ node {
 	
 	println("VM PARAMS:" + host_params)
 	
-	println("NETWORK:  " + host_params.drop(3).join(",")
 	
 	stage("***** Checkout Github *****") {
 		git branch: git_branch, credentialsId: git_login, url: git_url
