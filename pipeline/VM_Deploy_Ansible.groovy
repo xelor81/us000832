@@ -15,6 +15,7 @@ node {
 	def host_params = env.Host1.split(',')
 	println("VM PARAMS:" + host_params)
 	
+	println"NETWORK:  " + host_params[3:6].join(",")]
 	
 	stage("***** Checkout Github *****") {
 		git branch: git_branch, credentialsId: git_login, url: git_url
@@ -24,5 +25,6 @@ node {
 	
 	
 	stages.deploy_VM_NET()
-	//stages.deploy_VM_LVM(
+	stages.deploy_VM_LVM(host_params[0])
+	//stages.deploy_VM(host_params[0], host_params[1], host_params[2])
 }

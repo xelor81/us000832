@@ -23,7 +23,7 @@ def deploy_VM_LVM(VOL_NAME) {
 }
 
 
-def deploy_VM_ans(VM_NAME, CPU, MEMORY, VM_NETWORK) {
+def deploy_VM(VM_NAME, CPU, MEMORY, VM_NETWORK) {
 	ansiColor('xterm') {
 		stage("***** Deploying VM *****") {
 			ansiblePlaybook colorized: true, 
