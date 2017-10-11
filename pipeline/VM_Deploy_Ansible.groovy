@@ -8,7 +8,7 @@ node {
 	
 	//------------------ EXECUTE PIPELINES JOBS ---------------------------
 	
-	stages.git_checkout(${git_branch}, ${git_login}, ${git_url})
+	stages.git_checkout(git_branch, git_login, git_url)
 	stages.deploy_VM_NET()
 	
 }

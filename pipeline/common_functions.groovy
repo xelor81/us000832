@@ -6,7 +6,8 @@ def setting_ansible_color() {
 
 def git_checkout(git_branch, git_login, git_url) {
 	stage("***** Checkout Github *****") {
-		git branch: ${git_branch}, credentialsId: ${git_login}, url: ${git_url}
+		println("DEF GIT CHECKOUT")
+		git branch: git_branch, credentialsId: git_login, url: git_url
 	}
 		
 }
