@@ -10,6 +10,7 @@ node {
 	println("git URL:    " + git_url)
 	println("git LOGIN:  " + git_login)
 	println("git BRANCH: " + git_branch)
+	println("VM VOL:     " + env.Host1)
 	
 	stage("***** Checkout Github *****") {
 		git branch: git_branch, credentialsId: git_login, url: git_url
@@ -19,5 +20,5 @@ node {
 	
 	
 	stages.deploy_VM_NET()
-	
+	//stages.deploy_VM_LVM(
 }
